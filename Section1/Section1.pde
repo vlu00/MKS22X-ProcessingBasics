@@ -2,10 +2,6 @@ int MAX_valuessssss = 100;
 int MIN_valuessssss = -100;
 Visualizer v;
 
-/*You are simulating a visualizer of multiple valuesssssss
- You need to create a display method first. 
- Then you can make a method that changes the valuesssssss each time the update is called. 
- */
 class Visualizer {
   float x, y;
   float [] values;
@@ -42,30 +38,34 @@ class Visualizer {
     int counter = 0; 
     for (int i = 0; i < values.length; i++) {
       if (values[i] < 0) {
-        fill(255, 0, 0); //red
+        if (values[i] < -50) {
+          fill(255, 0, 0); //red
+        }
+        else {
+          fill(255, 165, 0); //orange
+        }
         rect(x+wide*i, y+100, wide, values[i]*-1);
         counter++; 
       }
       else {
-        fill(0, 255, 0); 
+        if (values[i] > 50) {
+          fill(0, 255, 0); //green
+        }
+        else {
+          fill(255, 255, 0); //yellow
+        }
         rect(x+wide*i, y+100-values[i], wide, values[i]); 
         counter++; 
       }
     }
   }
-  
+
   void update() {
-    //???WRITE THIS METHOD SECOND!!!
     for (int i = 0; i < values.length; i++) {
       values[i] += speeds[i]; 
       if (values[i] > 100 || values[i] < -100) {
         speeds[i] = speeds[i]*-1; 
       }
-      //??? keep them valuesssssss between max/min valuessssss so they stay in the box.
-
-      //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
-
-      
     }
   }
 }
