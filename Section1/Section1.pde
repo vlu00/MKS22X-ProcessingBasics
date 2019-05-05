@@ -52,19 +52,15 @@ class Visualizer {
         counter++; 
       }
     }
-
-    //???WRITE THIS METHOD FIRST!!!
-    //THESE ARE WRONG: They just illustrate how they could look
-    //fill(255, 0, 0); //red
-    //rect(x, y+100, wide, 50);
-    //fill(0, 255, 0); //green
-    //rect(x+wide, y+50, wide, 50);
   }
   
   void update() {
     //???WRITE THIS METHOD SECOND!!!
     for (int i = 0; i < values.length; i++) {
-      values[i] += speeds[i]; //the speed updates the valuesssssss. Do not touch this.
+      values[i] += speeds[i]; 
+      if (values[i] > 100 || values[i] < -100) {
+        speeds[i] = speeds[i]*-1; 
+      }
       //??? keep them valuesssssss between max/min valuessssss so they stay in the box.
 
       //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
@@ -81,5 +77,5 @@ void setup() {
 void draw() {
   background(255);
   v.display(); 
-  //v.update();
+  v.update();
 }
